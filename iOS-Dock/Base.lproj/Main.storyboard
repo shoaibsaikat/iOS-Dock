@@ -18,16 +18,25 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Yl-pm-NGH">
                                 <rect key="frame" x="0.0" y="0.0" width="820" height="930"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1L-aL-pqR" customClass="DockView" customModule="iOS_Dock" customModuleProvider="target">
+                                <rect key="frame" x="25" y="955" width="770" height="200"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="81V-CS-Q4h"/>
                             <constraint firstAttribute="bottom" secondItem="8Yl-pm-NGH" secondAttribute="bottom" constant="250" id="QEe-cS-rIw"/>
+                            <constraint firstItem="t1L-aL-pqR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-25" id="QSl-pi-SHp"/>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vm2-bD-VCo"/>
+                            <constraint firstItem="t1L-aL-pqR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="dq7-9I-lwP"/>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="fk4-Hu-d14"/>
+                            <constraint firstItem="t1L-aL-pqR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hzt-Y0-B9h"/>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qIB-l4-TlW"/>
+                            <constraint firstItem="t1L-aL-pqR" firstAttribute="top" secondItem="8Yl-pm-NGH" secondAttribute="bottom" constant="25" id="qSG-OF-AcI"/>
+                            <constraint firstAttribute="bottom" secondItem="t1L-aL-pqR" secondAttribute="bottom" constant="25" id="tFc-w0-xoL"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,6 +48,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
