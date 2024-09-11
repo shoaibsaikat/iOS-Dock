@@ -1,13 +1,13 @@
 //
-//  DockView.swift
+//  DockCollectionView.swift
 //  iOS-Dock
 //
-//  Created by Mina Shoaib Rahman on 9/9/24.
+//  Created by Mina Shoaib Rahman on 11/9/24.
 //
 
 import UIKit
 
-class DockView: UIView {
+class DockCollectionView: UICollectionView {
 
     override func draw(_ rect: CGRect) {
         let rect = CGRect(origin: CGPoint.zero, size: bounds.size)

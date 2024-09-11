@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,23 +21,40 @@
                                 <rect key="frame" x="0.0" y="0.0" width="820" height="930"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1L-aL-pqR" customClass="DockView" customModule="iOS_Dock" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hdb-SV-9cq" customClass="DockCollectionView" customModule="iOS_Dock" customModuleProvider="target">
                                 <rect key="frame" x="25" y="955" width="770" height="200"/>
-                            </view>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oFh-cP-N1Y">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Dock Cell" id="wZJ-yZ-Bm2">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HrU-eR-LhZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Hdb-SV-9cq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="5T0-za-XZa"/>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="81V-CS-Q4h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hdb-SV-9cq" secondAttribute="trailing" constant="25" id="BBj-As-RWa"/>
                             <constraint firstAttribute="bottom" secondItem="8Yl-pm-NGH" secondAttribute="bottom" constant="250" id="QEe-cS-rIw"/>
-                            <constraint firstItem="t1L-aL-pqR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-25" id="QSl-pi-SHp"/>
+                            <constraint firstItem="Hdb-SV-9cq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QO6-hk-ruy"/>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vm2-bD-VCo"/>
-                            <constraint firstItem="t1L-aL-pqR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="dq7-9I-lwP"/>
+                            <constraint firstItem="Hdb-SV-9cq" firstAttribute="top" secondItem="8Yl-pm-NGH" secondAttribute="bottom" constant="25" id="dIi-Iy-soO"/>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="fk4-Hu-d14"/>
-                            <constraint firstItem="t1L-aL-pqR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hzt-Y0-B9h"/>
                             <constraint firstItem="8Yl-pm-NGH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qIB-l4-TlW"/>
-                            <constraint firstItem="t1L-aL-pqR" firstAttribute="top" secondItem="8Yl-pm-NGH" secondAttribute="bottom" constant="25" id="qSG-OF-AcI"/>
-                            <constraint firstAttribute="bottom" secondItem="t1L-aL-pqR" secondAttribute="bottom" constant="25" id="tFc-w0-xoL"/>
+                            <constraint firstAttribute="bottom" secondItem="Hdb-SV-9cq" secondAttribute="bottom" constant="25" id="uiM-3e-gDc"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -48,6 +66,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
