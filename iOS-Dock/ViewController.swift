@@ -53,5 +53,9 @@ class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionV
         cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 165, height: collectionView.bounds.height - 40)
+    }
 }
 
