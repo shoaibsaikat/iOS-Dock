@@ -7,9 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIDropInteractionDelegate {
+class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    private var cellBackgrounds = [ "🌾", "🐇", "🌙", "🔥", "🌧", "🍎", "🍊", "🏔", "🏠"]
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var dockCV: UICollectionView! {
+        didSet {
+            dockCV.dataSource = self
+            dockCV.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +42,14 @@ class ViewController: UIViewController, UIDropInteractionDelegate {
                 self.imageView.image = image
             }
         })
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cellBackgrounds.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "Dock Cell", for: indexPath)
     }
 }
 

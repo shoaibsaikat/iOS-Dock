@@ -58,6 +58,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dockCV" destination="Hdb-SV-9cq" id="aNy-OR-vKB"/>
                         <outlet property="imageView" destination="8Yl-pm-NGH" id="dyp-TL-mIy"/>
                     </connections>
                 </viewController>

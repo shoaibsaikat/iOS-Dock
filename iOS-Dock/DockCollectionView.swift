@@ -8,6 +8,8 @@
 import UIKit
 
 class DockCollectionView: UICollectionView {
+    
+    private var cellBackgrounds = [ "🌾", "🐇", "🌙", "🔥", "🌧", "🍎", "🍊", "🏔", "🏠"]
 
     override func draw(_ rect: CGRect) {
         let rect = CGRect(origin: CGPoint.zero, size: bounds.size)
@@ -18,5 +20,4 @@ class DockCollectionView: UICollectionView {
         UIColor.brown.setFill()
         roundedDock.fill()
     }
-
 }
