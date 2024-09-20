@@ -9,4 +9,5 @@ import UIKit
 
 class DockCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var label: UILabel!
 }

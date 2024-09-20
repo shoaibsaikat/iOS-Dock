@@ -8,9 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    private var cellBackgrounds = [ "🌾", "🐇", "🌙", "🔥", "🌧", "🍎", "🍊", "🏔", "🏠"]
-    
+
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var dockCV: UICollectionView! {
@@ -45,13 +43,13 @@ class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellBackgrounds.count
+        return DockCellModel.CellBackgrounds.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Dock Cell", for: indexPath)
-        cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Dock Cell", for: indexPath) as? DockCollectionViewCell
+        cell?.label.text = DockCellModel.CellBackgrounds[indexPath.item]
+        return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

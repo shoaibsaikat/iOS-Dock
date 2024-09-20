@@ -15,6 +15,7 @@
 		1191CF312C8F242300B223FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1191CF2F2C8F242300B223FF /* LaunchScreen.storyboard */; };
 		11E9DD222C9BFA7600AECCB8 /* DockCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9DD212C9BFA7600AECCB8 /* DockCollectionView.swift */; };
 		11E9DD262C9C188C00AECCB8 /* DockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9DD252C9C188C00AECCB8 /* DockCollectionViewCell.swift */; };
+		11E9DD282C9C19D500AECCB8 /* DockCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9DD272C9C19D500AECCB8 /* DockCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1191CF322C8F242300B223FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11E9DD212C9BFA7600AECCB8 /* DockCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockCollectionView.swift; sourceTree = "<group>"; };
 		11E9DD252C9C188C00AECCB8 /* DockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockCollectionViewCell.swift; sourceTree = "<group>"; };
+		11E9DD272C9C19D500AECCB8 /* DockCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				1191CF242C8F242000B223FF /* AppDelegate.swift */,
 				1191CF262C8F242000B223FF /* SceneDelegate.swift */,
 				1191CF282C8F242000B223FF /* ViewController.swift */,
+				11E9DD272C9C19D500AECCB8 /* DockCellModel.swift */,
 				11E9DD212C9BFA7600AECCB8 /* DockCollectionView.swift */,
 				11E9DD252C9C188C00AECCB8 /* DockCollectionViewCell.swift */,
 				1191CF2A2C8F242000B223FF /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				11E9DD262C9C188C00AECCB8 /* DockCollectionViewCell.swift in Sources */,
 				1191CF252C8F242000B223FF /* AppDelegate.swift in Sources */,
 				1191CF272C8F242000B223FF /* SceneDelegate.swift in Sources */,
+				11E9DD282C9C19D500AECCB8 /* DockCellModel.swift in Sources */,
 				11E9DD222C9BFA7600AECCB8 /* DockCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -37,8 +37,25 @@
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HrU-eR-LhZ">
                                             <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buT-XW-qq5">
+                                                    <rect key="frame" x="-28" y="25" width="221" height="115"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="96"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="buT-XW-qq5" firstAttribute="centerY" secondItem="HrU-eR-LhZ" secondAttribute="centerY" id="2Jw-an-2Jt"/>
+                                                <constraint firstItem="buT-XW-qq5" firstAttribute="leading" secondItem="HrU-eR-LhZ" secondAttribute="leading" priority="250" id="EjQ-Jx-Oqe"/>
+                                                <constraint firstItem="buT-XW-qq5" firstAttribute="centerX" secondItem="HrU-eR-LhZ" secondAttribute="centerX" id="Yz1-42-hRB"/>
+                                                <constraint firstAttribute="trailing" secondItem="buT-XW-qq5" secondAttribute="trailing" priority="250" id="dfD-H0-X1U"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="165" height="165"/>
+                                        <connections>
+                                            <outlet property="label" destination="buT-XW-qq5" id="MZn-Cv-c5q"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

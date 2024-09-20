@@ -18,6 +18,6 @@ class DockCollectionView: UICollectionView {
         UIColor.brown.setFill()
         roundedDock.fill()
         
-//        contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
     }
 }
