@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate, UICollectionViewDropDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -15,6 +15,8 @@ class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionV
         didSet {
             dockCV.dataSource = self
             dockCV.delegate = self
+            dockCV.dragDelegate = self
+            dockCV.dropDelegate = self
         }
     }
     
@@ -54,6 +56,45 @@ class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 165, height: collectionView.bounds.height - 40)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        if let uiItem = collectionView.cellForItem(at: indexPath) as? DockCollectionViewCell, let text = uiItem.label.text {
+            let dragItem = UIDragItem(itemProvider: NSItemProvider(object: NSAttributedString(string: text)))
+            dragItem.localObject = NSAttributedString(string: text)
+            return [dragItem]
+        } else {
+            return []
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        return session.canLoadObjects(ofClass: NSAttributedString.self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        let isCVMove = (session.localDragSession?.localContext as? UICollectionView) == collectionView
+        return UICollectionViewDropProposal(operation: isCVMove ? .move : .copy, intent: .insertAtDestinationIndexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        for item in coordinator.items {
+            if let source = item.sourceIndexPath?.item {
+                // collectionView
+                collectionView.performBatchUpdates({
+                    if let destination = coordinator.destinationIndexPath?.item, let text = (item.dragItem.localObject as? NSAttributedString)?.string {
+                        DockCellModel.CellBackgrounds.remove(at: source)
+                        DockCellModel.CellBackgrounds.insert(text, at: destination)
+                        collectionView.deleteItems(at: [item.sourceIndexPath!])
+                        collectionView.insertItems(at: [coordinator.destinationIndexPath!])
+                    }
+                })
+            } else if let _ = item.dragItem.localObject as? NSAttributedString {
+                // local
+            } else {
+                // external
+            }
+        }
     }
 }
 
