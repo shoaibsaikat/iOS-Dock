@@ -8,6 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate, UICollectionViewDropDelegate {
+    
+    private let dockCellWidth: CGFloat = 165.0
+    private let dockCellHeightPadding: CGFloat = 40.0
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -55,7 +58,7 @@ class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 165, height: collectionView.bounds.height - 40)
+        return CGSize(width: dockCellWidth, height: collectionView.bounds.height - dockCellHeightPadding)
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
