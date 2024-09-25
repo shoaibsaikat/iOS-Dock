@@ -80,26 +80,37 @@ class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(row: 0, section: 0)
         for item in coordinator.items {
             if let source = item.sourceIndexPath?.item {
                 // collectionView
-                if let destination = coordinator.destinationIndexPath?.item, let text = (item.dragItem.localObject as? NSAttributedString)?.string {
+                if let text = (item.dragItem.localObject as? NSAttributedString)?.string {
                     collectionView.performBatchUpdates({
                         DockCellModel.CellBackgrounds.remove(at: source)
-                        DockCellModel.CellBackgrounds.insert(text, at: destination)
+                        DockCellModel.CellBackgrounds.insert(text, at: destinationIndexPath.item)
                         collectionView.deleteItems(at: [item.sourceIndexPath!])
-                        collectionView.insertItems(at: [coordinator.destinationIndexPath!])
+                        collectionView.insertItems(at: [destinationIndexPath])
                     }, completion: { _ in
                         // works without drop, but needed for the animation
-                        coordinator.drop(item.dragItem, toItemAt: coordinator.destinationIndexPath!)
+                        coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
                     })
                 }
             } else if let _ = item.dragItem.localObject as? NSAttributedString {
                 // local
             } else {
                 // external
+                let placeholderContext = coordinator.drop(item.dragItem, to: UICollectionViewDropPlaceholder(insertionIndexPath: destinationIndexPath, reuseIdentifier: "Dock Placeholder Cell"))
+                item.dragItem.itemProvider.loadObject(ofClass: NSAttributedString.self, completionHandler: { (provider, _) in
+                    DispatchQueue.main.async {
+                        if let attributedString = provider as? NSAttributedString {
+                            placeholderContext.commitInsertion(dataSourceUpdates: { indexPath in
+                                // just instring into the model will work because the cell will be drawn using dequeueReusableCell
+                                DockCellModel.CellBackgrounds.insert(attributedString.string, at: destinationIndexPath.item)
+                            })
+                        }
+                    }
+                })
             }
         }
     }
 }
-

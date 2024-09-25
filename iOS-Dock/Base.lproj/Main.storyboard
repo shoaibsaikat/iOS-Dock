@@ -57,6 +57,23 @@
                                             <outlet property="label" destination="buT-XW-qq5" id="MZn-Cv-c5q"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Dock Placeholder Cell" id="CIT-lA-0hz">
+                                        <rect key="frame" x="175" y="17.5" width="166" height="165"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ERd-4K-g3E">
+                                            <rect key="frame" x="0.0" y="0.0" width="166" height="165"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="pT7-He-oor">
+                                                    <rect key="frame" x="73" y="72.5" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pT7-He-oor" firstAttribute="centerX" secondItem="ERd-4K-g3E" secondAttribute="centerX" id="Vvp-gq-adL"/>
+                                                <constraint firstItem="pT7-He-oor" firstAttribute="centerY" secondItem="ERd-4K-g3E" secondAttribute="centerY" id="zqk-Z7-oQh"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
