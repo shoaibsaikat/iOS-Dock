@@ -73,22 +73,24 @@ class ViewController: UIViewController, UIDropInteractionDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-        let isCVMove = (session.localDragSession?.localContext as? UICollectionView) == collectionView
-        return UICollectionViewDropProposal(operation: isCVMove ? .move : .copy, intent: .insertAtDestinationIndexPath)
+        return UICollectionViewDropProposal(operation: (session.localDragSession?.localContext as? UICollectionView) == collectionView ? .move : .copy, intent: .insertAtDestinationIndexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         for item in coordinator.items {
             if let source = item.sourceIndexPath?.item {
                 // collectionView
-                collectionView.performBatchUpdates({
-                    if let destination = coordinator.destinationIndexPath?.item, let text = (item.dragItem.localObject as? NSAttributedString)?.string {
+                if let destination = coordinator.destinationIndexPath?.item, let text = (item.dragItem.localObject as? NSAttributedString)?.string {
+                    collectionView.performBatchUpdates({
                         DockCellModel.CellBackgrounds.remove(at: source)
                         DockCellModel.CellBackgrounds.insert(text, at: destination)
                         collectionView.deleteItems(at: [item.sourceIndexPath!])
                         collectionView.insertItems(at: [coordinator.destinationIndexPath!])
-                    }
-                })
+                    }, completion: { _ in
+                        // works without drop, but needed for the animation
+                        coordinator.drop(item.dragItem, toItemAt: coordinator.destinationIndexPath!)
+                    })
+                }
             } else if let _ = item.dragItem.localObject as? NSAttributedString {
                 // local
             } else {
