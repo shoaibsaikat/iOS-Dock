@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		118D010F2CA7C1D30077B39E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D010E2CA7C1D30077B39E /* CanvasView.swift */; };
 		1191CF252C8F242000B223FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1191CF242C8F242000B223FF /* AppDelegate.swift */; };
 		1191CF272C8F242000B223FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1191CF262C8F242000B223FF /* SceneDelegate.swift */; };
 		1191CF292C8F242000B223FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1191CF282C8F242000B223FF /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		118D010E2CA7C1D30077B39E /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		1191CF212C8F242000B223FF /* iOS-Dock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Dock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1191CF242C8F242000B223FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1191CF262C8F242000B223FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				1191CF242C8F242000B223FF /* AppDelegate.swift */,
 				1191CF262C8F242000B223FF /* SceneDelegate.swift */,
 				1191CF282C8F242000B223FF /* ViewController.swift */,
+				118D010E2CA7C1D30077B39E /* CanvasView.swift */,
 				11E9DD272C9C19D500AECCB8 /* DockCellModel.swift */,
 				11E9DD212C9BFA7600AECCB8 /* DockCollectionView.swift */,
 				11E9DD252C9C188C00AECCB8 /* DockCollectionViewCell.swift */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1191CF292C8F242000B223FF /* ViewController.swift in Sources */,
+				118D010F2CA7C1D30077B39E /* CanvasView.swift in Sources */,
 				11E9DD262C9C188C00AECCB8 /* DockCollectionViewCell.swift in Sources */,
 				1191CF252C8F242000B223FF /* AppDelegate.swift in Sources */,
 				1191CF272C8F242000B223FF /* SceneDelegate.swift in Sources */,
