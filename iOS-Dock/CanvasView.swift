@@ -34,7 +34,7 @@ class CanvasView: UIView, UIDropInteractionDelegate {
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        return session.canLoadObjects(ofClass: UIImage.self)
+        return session.canLoadObjects(ofClass: UIImage.self) || session.canLoadObjects(ofClass: NSAttributedString.self)
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
@@ -45,6 +45,17 @@ class CanvasView: UIView, UIDropInteractionDelegate {
         session.loadObjects(ofClass: UIImage.self, completion: { images in
             if let image = images.first as? UIImage {
                 self.backgroundImage = image
+            }
+        })
+        
+        session.loadObjects(ofClass: NSAttributedString.self, completion: { texts in
+            if let text = (texts as? [NSAttributedString] ?? []).first {
+                let label = UILabel()
+                label.attributedText = text
+                label.center = session.location(in: self)
+                label.backgroundColor = .clear
+                label.sizeToFit()
+                self.addSubview(label)
             }
         })
     }
