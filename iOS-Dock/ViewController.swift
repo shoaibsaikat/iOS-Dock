@@ -12,7 +12,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     private let dockCellWidth: CGFloat = 165.0
     private let dockCellHeightPadding: CGFloat = 40.0
     
-    @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var dockCV: UICollectionView! {
         didSet {
             dockCV.dataSource = self

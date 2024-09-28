@@ -93,7 +93,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="canvasView" destination="W4x-rr-I2J" id="cVI-rF-fZi"/>
                         <outlet property="dockCV" destination="Hdb-SV-9cq" id="aNy-OR-vKB"/>
                     </connections>
                 </viewController>
