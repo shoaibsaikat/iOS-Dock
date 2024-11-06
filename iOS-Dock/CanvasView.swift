@@ -41,6 +41,10 @@ class CanvasView: UIView, UIDropInteractionDelegate {
         return UIDropProposal(operation: .copy)
     }
     
+    @objc func tapGestureRecog(recognizer: UITapGestureRecognizer) {
+        print("tapped")
+    }
+    
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         session.loadObjects(ofClass: UIImage.self, completion: { images in
             if let image = images.first as? UIImage {
@@ -55,7 +59,11 @@ class CanvasView: UIView, UIDropInteractionDelegate {
                 label.center = session.location(in: self)
                 label.backgroundColor = .clear
                 label.sizeToFit()
+                label.isUserInteractionEnabled = true
                 self.addSubview(label)
+//                CanvasItemPinchRecognizer().bindLabelWithRecognizer(label: label)
+//                label.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(CanvasItemPinchRecognizer.pinchRecognizer(recognizer:))))
+                label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecog(recognizer:))))
             }
         })
     }

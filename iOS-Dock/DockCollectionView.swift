@@ -18,7 +18,7 @@ class DockCollectionView: UICollectionView {
         UIRectFill(rect)
         let roundedDock = UIBezierPath(roundedRect: bounds, cornerRadius: dockCorner)
         roundedDock.addClip()
-        UIColor.brown.setFill()
+        UIColor.brown.withAlphaComponent(0.8).setFill()
         roundedDock.fill()
         
         contentInset = UIEdgeInsets(top: 0, left: insetPadding, bottom: 0, right: insetPadding)
