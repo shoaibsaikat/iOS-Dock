@@ -31,6 +31,7 @@ class CanvasView: UIView, UIDropInteractionDelegate {
     
     func setup() {
         addInteraction(UIDropInteraction(delegate: self))
+        addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(self.pinchRecognizer(recognizer:))))
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
@@ -41,8 +42,18 @@ class CanvasView: UIView, UIDropInteractionDelegate {
         return UIDropProposal(operation: .copy)
     }
     
+    @objc func pinchRecognizer(recognizer: UIPinchGestureRecognizer) {
+        switch recognizer.state {
+        case .changed, .ended:
+            recognizer.scale = 1.0
+            print("pinched")
+        default: break
+        }
+    }
+    
     @objc func tapGestureRecog(recognizer: UITapGestureRecognizer) {
         print("tapped")
+        // TODO: keep track on tapped view and in pinch recognizer apply scale to that view
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
@@ -60,10 +71,8 @@ class CanvasView: UIView, UIDropInteractionDelegate {
                 label.backgroundColor = .clear
                 label.sizeToFit()
                 label.isUserInteractionEnabled = true
-                self.addSubview(label)
-//                CanvasItemPinchRecognizer().bindLabelWithRecognizer(label: label)
-//                label.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(CanvasItemPinchRecognizer.pinchRecognizer(recognizer:))))
                 label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecog(recognizer:))))
+                self.addSubview(label)
             }
         })
     }
