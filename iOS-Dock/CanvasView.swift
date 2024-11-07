@@ -9,6 +9,8 @@ import UIKit
 
 class CanvasView: UIView, UIDropInteractionDelegate {
     
+    var focusedView: UIView?
+    
     var backgroundImage: UIImage? {
         didSet {
             setNeedsDisplay()
@@ -44,15 +46,19 @@ class CanvasView: UIView, UIDropInteractionDelegate {
     
     @objc func pinchRecognizer(recognizer: UIPinchGestureRecognizer) {
         switch recognizer.state {
-        case .changed, .ended:
+        case .ended:
             recognizer.scale = 1.0
-            print("pinched")
+        case .began, .changed:
+            if let label = focusedView as? UILabel {
+                label.transform = label.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
+                recognizer.scale = 1.0
+            }
         default: break
         }
     }
     
     @objc func tapGestureRecog(recognizer: UITapGestureRecognizer) {
-        print("tapped")
+        focusedView = recognizer.view
         // TODO: keep track on tapped view and in pinch recognizer apply scale to that view
     }
     
