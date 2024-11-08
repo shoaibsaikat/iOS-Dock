@@ -57,11 +57,11 @@ class CanvasView: UIView, UIDropInteractionDelegate {
         }
     }
     
-    @objc func tapGestureRecog(recognizer: UITapGestureRecognizer) {
+    @objc func tapGestureRecognizer(recognizer: UITapGestureRecognizer) {
         focusedView = recognizer.view
     }
     
-    @objc func longPressGestureRecog(recognizer: UILongPressGestureRecognizer) {
+    @objc func longPressGestureRecognizer(recognizer: UILongPressGestureRecognizer) {
         switch recognizer.state {
 //        case .began:
 //            print("long pressed")
@@ -87,8 +87,8 @@ class CanvasView: UIView, UIDropInteractionDelegate {
                 label.backgroundColor = .clear
                 label.sizeToFit()
                 label.isUserInteractionEnabled = true
-                label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecog(recognizer:))))
-                label.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecog(recognizer:))))
+                label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecognizer(recognizer:))))
+                label.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognizer(recognizer:))))
                 self.addSubview(label)
             }
         })
