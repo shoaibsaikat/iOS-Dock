@@ -59,7 +59,17 @@ class CanvasView: UIView, UIDropInteractionDelegate {
     
     @objc func tapGestureRecog(recognizer: UITapGestureRecognizer) {
         focusedView = recognizer.view
-        // TODO: keep track on tapped view and in pinch recognizer apply scale to that view
+    }
+    
+    @objc func longPressGestureRecog(recognizer: UILongPressGestureRecognizer) {
+        switch recognizer.state {
+//        case .began:
+//            print("long pressed")
+        case .changed, .ended:
+            recognizer.view?.center = recognizer.location(in: recognizer.view?.superview)
+        default:
+            break
+        }
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
@@ -78,6 +88,7 @@ class CanvasView: UIView, UIDropInteractionDelegate {
                 label.sizeToFit()
                 label.isUserInteractionEnabled = true
                 label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecog(recognizer:))))
+                label.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecog(recognizer:))))
                 self.addSubview(label)
             }
         })
